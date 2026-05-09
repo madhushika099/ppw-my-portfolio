@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rushani Randeni | PPW Portfolio</title>
+  <style>
+    :root {
+      --navy: #1b3a6b;
+      --ink: #243044;
+      --muted: #66758a;
+      --gold: #c9a84c;
+      --green: #2f7a68;
+      --paper: #ffffff;
+      --soft: #f3f6f9;
+      --line: #d8e0ea;
+      --dark: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      position: relative;
+      isolation: isolate;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #06111f 0%, #0a1730 48%, #07111f 100%);
+      line-height: 1.65;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      inset: -24%;
+      background:
+        radial-gradient(circle at 16% 18%, rgba(47, 122, 104, 0.34), transparent 26%),
+        radial-gradient(circle at 84% 20%, rgba(201, 168, 76, 0.22), transparent 24%),
+        radial-gradient(circle at 48% 84%, rgba(30, 77, 135, 0.34), transparent 28%),
+        linear-gradient(150deg, rgba(27, 58, 107, 0.42), transparent 42%, rgba(6, 17, 31, 0.58));
+      filter: blur(16px);
+      opacity: 0.88;
+      animation: darkFlow 32s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      inset: 0;
+      background:
+        repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 86px),
+        linear-gradient(90deg, transparent 0 42%, rgba(255, 255, 255, 0.08) 50%, transparent 58%);
+      background-size: 140px 140px, 680px 680px;
+      opacity: 0.36;
+      animation: darkScan 38s linear infinite;
+    }
+
+    #live-background {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.92;
+      mix-blend-mode: screen;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(27, 58, 107, 0.96);
+      color: #ffffff;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.18);
+    }
+
+    nav {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 42px;
+      object-fit: contain;
+      background: #ffffff;
+      border-radius: 4px;
+      padding: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      opacity: 0.9;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+      opacity: 1;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      color: #ffffff;
+      background:
+        linear-gradient(90deg, rgba(17, 24, 39, 0.94), rgba(27, 58, 107, 0.78)),
+        url("assets/ppw-doc/image2.png");
+      background-size: cover;
+      background-position: center;
+      min-height: 76vh;
+      display: grid;
+      align-items: center;
+      animation: heroBackgroundPan 26s ease-in-out infinite alternate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(118deg, transparent 0 34%, rgba(201, 168, 76, 0.18) 43%, transparent 54%),
+        linear-gradient(64deg, transparent 0 38%, rgba(47, 122, 104, 0.24) 47%, transparent 58%);
+      background-size: 760px 760px, 620px 620px;
+      animation: heroShimmer 20s ease-in-out infinite alternate;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 76px 0 64px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      margin: 0 0 12px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 74px);
+      line-height: 1.02;
+      margin: 0;
+      max-width: 780px;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 18px;
+      margin: 22px 0 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .button.primary {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #17202c;
+    }
+
+    .hero-card {
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.11);
+      padding: 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card img {
+      width: 154px;
+      height: 154px;
+      object-fit: cover;
+      background: #ffffff;
+      border: 6px solid #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 14px 34px rgba(8, 13, 23, 0.24);
+      margin-bottom: 22px;
+    }
+
+    .hero-card dl {
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-card dt {
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .hero-card dd {
+      margin: 2px 0 0;
+      color: #ffffff;
+    }
+
+    @keyframes darkFlow {
+      from {
+        transform: translate3d(-22px, -14px, 0) scale(1);
+      }
+
+      to {
+        transform: translate3d(34px, 22px, 0) scale(1.05);
+      }
+    }
+
+    @keyframes darkScan {
+      from {
+        background-position: 0 0, -680px 0;
+      }
+
+      to {
+        background-position: 140px 140px, 680px 0;
+      }
+    }
+
+    @keyframes heroShimmer {
+      from {
+        transform: translate3d(-28px, 0, 0) scale(1);
+        background-position: 0 0, 0 0;
+        opacity: 0.62;
+      }
+
+      to {
+        transform: translate3d(28px, 18px, 0) scale(1.03);
+        background-position: 180px 120px, -150px 180px;
+        opacity: 0.92;
+      }
+    }
+
+    @keyframes heroBackgroundPan {
+      from {
+        background-position: center center;
+      }
+
+      to {
+        background-position: 56% 48%;
+      }
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 36px 0 76px;
+    }
+
+    section {
+      padding: 42px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    h2 {
+      color: #f8fafc;
+      font-size: clamp(28px, 4vw, 38px);
+      line-height: 1.12;
+      margin: 0 0 22px;
+      padding-bottom: 10px;
+      border-bottom: 4px solid var(--gold);
+      width: fit-content;
+    }
+
+    h3 {
+      color: var(--navy);
+      font-size: 21px;
+      margin: 0 0 12px;
+    }
+
+    section > h3 {
+      color: #f8fafc;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin-top: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      box-shadow: 0 10px 28px rgba(27, 58, 107, 0.07);
+    }
+
+    .toc-list,
+    .profile-list,
+    .clean-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc-list li,
+    .profile-list li {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .toc-list li:last-child,
+    .profile-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .label {
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    .muted {
+      color: #d7e2f2;
+    }
+
+    .panel .muted,
+    figure .muted {
+      color: var(--muted);
+    }
+
+    .chips {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chips li {
+      background: #ecf4f1;
+      border: 1px solid #cce1d9;
+      border-radius: 999px;
+      color: var(--green);
+      font-weight: 800;
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+
+    details {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      box-shadow: 0 8px 22px rgba(27, 58, 107, 0.05);
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 16px 18px;
+      font-weight: 800;
+      color: var(--navy);
+      background: #ffffff;
+    }
+
+    details[open] summary {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .journal-body {
+      padding: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .journal-body div {
+      background: var(--soft);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .journal-body strong {
+      color: var(--green);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .goals {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .swot {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .swot .panel {
+      box-shadow: none;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    th,
+    td {
+      text-align: left;
+      vertical-align: top;
+      padding: 13px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      background: var(--navy);
+      color: #ffffff;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .image-stack {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .cv-pages {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      justify-content: stretch;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    figure {
+      margin: 0;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(27, 58, 107, 0.08);
+    }
+
+    figure img {
+      width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      padding: 11px 14px;
+      font-size: 14px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--dark);
+      color: #ffffff;
+      text-align: center;
+      padding: 28px 16px;
+    }
+
+    @media (max-width: 820px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 12px 0;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero-inner,
+      .grid,
+      .goals,
+      .swot,
+      .journal-body,
+      .image-stack {
+        grid-template-columns: 1fr;
+      }
+
+      .toc-list li,
+      .profile-list li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .hero {
+        min-height: 68vh;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+
+      .cv-pages {
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
+        overflow-x: auto;
+        padding-bottom: 12px;
+      }
+
+      .cv-pages figure {
+        min-width: 300px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before,
+      body::after,
+      #live-background,
+      .hero,
+      .hero::before {
+        animation: none;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <canvas id="live-background" aria-hidden="true"></canvas>
+  <header>
+    <nav>
+      <div class="brand">
+        <img src="assets/ppw-doc/image1.png" alt="SLIIT logo">
+        <span>PPW Portfolio</span>
+      </div>
+      <div class="nav-links">
+        <a href="#profile">Profile</a>
+        <a href="#journals">Journal</a>
+        <a href="#career">Career Plan</a>
+        <a href="#cv">CV</a>
+        <a href="#evidence">Evidence</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">Preparation for Professional World IT4070</p>
+        <h1>Rushani Randeni</h1>
+        <p class="hero-copy">
+          A completed professional portfolio for R. P. R. M. Randeni, final-year undergraduate
+          at the Faculty of Computing, Sri Lanka Institute of Information Technology.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#profile">View Portfolio</a>
+          <a class="button" href="#cv">My CV</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <img src="assets/ppw-doc/profile-photo.png" alt="Rushani Randeni profile photo">
+        <dl>
+          <div>
+            <dt>Name</dt>
+            <dd>R. P. R. M. Randeni</dd>
+          </div>
+          <div>
+            <dt>IT Number</dt>
+            <dd>IT22578778</dd>
+          </div>
+          <div>
+            <dt>Degree</dt>
+            <dd>BSc (Hons) in Information Technology</dd>
+          </div>
+          <div>
+            <dt>Faculty</dt>
+            <dd>Faculty of Computing</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <section id="contents">
+      <h2>Table of Contents</h2>
+      <div class="panel">
+        <ul class="toc-list">
+          <li><span class="label">01</span><span>Introduction to Myself</span></li>
+          <li><span class="label">02</span><span>Reflective Journal</span></li>
+          <li><span class="label">03</span><span>Career Development Plan</span></li>
+          <li><span class="label">04</span><span>Curriculum Vitae</span></li>
+          <li><span class="label">05</span><span>Evidence of Skill Development</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="profile">
+      <h2>Introduction to Myself</h2>
+      <div class="grid">
+        <article class="panel">
+          <h3>Personal Overview</h3>
+          <p>
+            My name is Rushani Randeni, and I am a final-year undergraduate at the Faculty of
+            Computing, Sri Lanka Institute of Information Technology, following the BSc (Hons)
+            in Information Technology degree programme.
+          </p>
+          <p>
+            I consider myself a motivated, responsible, and self-driven student who is interested
+            in building a professional career in the IT industry. During my university journey, I
+            have focused not only on academic learning but also on developing the personal and
+            professional qualities needed for the workplace.
+          </p>
+        </article>
+        <article class="panel">
+          <h3>Professional Interests</h3>
+          <p>
+            My main areas of interest are UI/UX design, software quality assurance, web development,
+            and mobile application development. I enjoy learning how technology can be used to
+            create user-friendly, reliable, and meaningful digital solutions.
+          </p>
+          <p>
+            I am especially interested in understanding how good design, usability, and software
+            quality work together to improve the overall user experience.
+          </p>
+        </article>
+      </div>
+      <div class="grid" style="margin-top: 18px;">
+        <article class="panel">
+          <h3>Personal Strengths</h3>
+          <p>
+            I believe that continuous learning, teamwork, communication, and time management are
+            important qualities for becoming an industry-ready graduate.
+          </p>
+          <p>
+            During academic activities and project work, I try to complete my responsibilities with
+            dedication and work effectively with others. I value adaptability and self-improvement
+            because these qualities are essential in a constantly changing IT field.
+          </p>
+        </article>
+        <article class="panel">
+          <h3>Future Aim</h3>
+          <p>
+            My future goal is to become a skilled IT professional who can contribute effectively to
+            software-related projects while continuing to improve both technical and professional
+            skills.
+          </p>
+          <p>
+            In the long term, I aim to build a successful career in a field that allows me to combine
+            creativity, problem-solving, and technical knowledge.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="journals">
+      <h2>Reflective Journal</h2>
+      <p class="muted">My learning journey in preparing for the professional world.</p>
+
+      <details open>
+        <summary>Journal Entry 1: Introduction to PPW</summary>
+        <div class="journal-body">
+          <div><strong>What I Learned</strong>PPW is a compulsory module focused on professional preparation. Key assessments include a quiz, portfolio, and interview role play.</div>
+          <div><strong>How I Will Apply This</strong>I will build my portfolio carefully, ensure all sections are complete, improve my CV, and include relevant certificates as evidence.</div>
+          <div><strong>My Reflection</strong>Professional preparation must start before graduation. Technical knowledge alone is not enough.</div>
+          <div><strong>What I Want to Improve</strong>I want to improve how I present myself through my portfolio, CV, and interviews, and set clearer career goals.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Journal Entry 2: Presentation Skills</summary>
+        <div class="journal-body">
+          <div><strong>What I Learned</strong>Presentations need a strong closing. Slides with too much text weaken delivery, and the presenter should remain the focus.</div>
+          <div><strong>How I Will Apply This</strong>I will use simple slides with key points only, match my spoken explanation with the slides, and end with a proper conclusion and Q&A slide.</div>
+          <div><strong>My Reflection</strong>Audiences remember how ideas are delivered. Clear explanation and confident delivery matter more than slide design.</div>
+          <div><strong>What I Want to Improve</strong>I want to improve my confidence and voice clarity by practicing before every presentation.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Journal Entry 3: Business Writing and Formal Letter Writing</summary>
+        <div class="journal-body">
+          <div><strong>What I Learned</strong>Professional writing must be clear, concise, polite, and formal. Formal letters follow a fixed structure.</div>
+          <div><strong>How I Will Apply This</strong>I will use "Yours faithfully" when the recipient's name is unknown and "Yours sincerely" when the recipient is known.</div>
+          <div><strong>My Reflection</strong>Professional writing is about clarity and respect, not just grammar. A well-written letter creates a positive impression.</div>
+          <div><strong>What I Want to Improve</strong>I want to practice request, complaint, and application letters and strengthen proofreading before submission.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Journal Entry 4: Email Writing and Memo Writing</summary>
+        <div class="journal-body">
+          <div><strong>What I Learned</strong>Emails are for external communication, while memos are for internal use. Resignation letters must maintain a positive tone.</div>
+          <div><strong>How I Will Apply This</strong>I will write professional emails with clarity and politeness and offer support during handover when needed.</div>
+          <div><strong>My Reflection</strong>Professional writing matters even after joining a workplace. How someone leaves a job reflects their character.</div>
+          <div><strong>What I Want to Improve</strong>I want to improve workplace emails, memos, and formal letters with the correct tone and structure.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Journal Entry 5: Telephone Etiquette</summary>
+        <div class="journal-body">
+          <div><strong>What I Learned</strong>Telephone communication relies on speaking and listening. A good call needs clear speech, active listening, proper timing, and polite interaction.</div>
+          <div><strong>How I Will Apply This</strong>I will prepare key points before calling, choose the right time, introduce myself clearly, and listen carefully.</div>
+          <div><strong>My Reflection</strong>Without body language, tone and voice clarity become critical. A poorly handled call can leave a negative impression.</div>
+          <div><strong>What I Want to Improve</strong>I want to build confidence in professional calls through telephone role plays and proper preparation.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Journal Entry 6: Report Writing</summary>
+        <div class="journal-body">
+          <div><strong>What I Learned</strong>Reports record evidence and decisions for future reference. They must be audience-focused with relevant content only.</div>
+          <div><strong>How I Will Apply This</strong>I will write structured reports, cite sources in IEEE format, and place large data in appendices.</div>
+          <div><strong>My Reflection</strong>A good report is organized, neutral, and evidence-based. Personal opinions should only appear when they support the purpose.</div>
+          <div><strong>What I Want to Improve</strong>I want to improve report structure, IEEE referencing accuracy, and appendix usage.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Journal Entry 7: Interview Preparation and CV Writing</summary>
+        <div class="journal-body">
+          <div><strong>What I Learned</strong>A CV must be clean and professional. IT companies prefer PDF format, and LinkedIn and GitHub profiles are important additions.</div>
+          <div><strong>How I Will Apply This</strong>I will refine my CV, export it as PDF, update LinkedIn, and organize GitHub to demonstrate practical work.</div>
+          <div><strong>My Reflection</strong>A CV is the first impression I make on a recruiter. Small formatting decisions matter.</div>
+          <div><strong>What I Want to Improve</strong>I want a stronger CV, LinkedIn profile, and GitHub profile that support job applications effectively.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Journal Entry 8: Presentation Skills Advanced</summary>
+        <div class="journal-body">
+          <div><strong>What I Learned</strong>Effective delivery involves vocal variety, eye contact, body language, posture, stage movement, and timing.</div>
+          <div><strong>How I Will Apply This</strong>I will practice before presentations, keep slides clean, and coordinate transitions in group presentations.</div>
+          <div><strong>My Reflection</strong>A successful presentation depends on both preparation and delivery. Confidence comes from practice.</div>
+          <div><strong>What I Want to Improve</strong>I want to improve eye contact, voice control, body language, and group presentation timing.</div>
+        </div>
+      </details>
+    </section>
+
+    <section id="career">
+      <h2>Career Development Plan</h2>
+      <div class="panel">
+        <h3>My Vision</h3>
+        <p>
+          My vision is to become a skilled UI/UX Designer who contributes to creating user-friendly,
+          accessible, and meaningful digital products. I am interested in understanding user needs,
+          designing clear interfaces, and improving the overall user experience of web and mobile
+          applications.
+        </p>
+        <p>
+          Within the next five years, I aim to establish myself as a competent UI/UX professional in
+          the IT industry. I hope to continuously improve my design thinking, communication skills,
+          technical understanding, and problem-solving ability.
+        </p>
+      </div>
+
+      <div class="goals" style="margin-top: 18px;">
+        <article class="panel">
+          <h3>Short-Term Goals</h3>
+          <ul>
+            <li>Successfully complete my final year academic work at SLIIT.</li>
+            <li>Improve my UI/UX design skills by practicing Figma and learning design principles.</li>
+            <li>Build a professional UI/UX portfolio with selected design work.</li>
+            <li>Improve professional communication through emails, presentations, and interviews.</li>
+            <li>Update and maintain a professional LinkedIn profile.</li>
+            <li>Improve frontend development knowledge to collaborate better with developers.</li>
+            <li>Complete at least one certificate related to UI/UX, web design, or user experience.</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h3>Long-Term Goals</h3>
+          <ul>
+            <li>Graduate with a BSc (Hons) in Information Technology from SLIIT.</li>
+            <li>Secure a full-time position as a UI/UX Designer in a reputed IT company.</li>
+            <li>Gain practical experience on real web and mobile application designs.</li>
+            <li>Improve user research, wireframing, prototyping, usability testing, and design systems.</li>
+            <li>Grow into a confident and independent design professional.</li>
+            <li>Build a strong professional profile through LinkedIn, portfolio work, and learning.</li>
+          </ul>
+        </article>
+      </div>
+
+      <h3 style="margin-top: 28px;">SWOT Analysis</h3>
+      <div class="swot">
+        <article class="panel">
+          <h3>Strengths</h3>
+          <ul>
+            <li>Strong interest in UI/UX design.</li>
+            <li>Fast learner and self-motivated.</li>
+            <li>Good teamwork and collaboration.</li>
+            <li>Commitment to continuous improvement.</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h3>Weaknesses</h3>
+          <ul>
+            <li>Limited UI/UX industry experience.</li>
+            <li>Time management under pressure.</li>
+            <li>Public speaking confidence and English speaking fluency.</li>
+            <li>Limited industry experience.</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h3>Opportunities</h3>
+          <ul>
+            <li>High demand for UI/UX designers.</li>
+            <li>Free online learning platforms.</li>
+            <li>SLIIT industry connections.</li>
+            <li>Remote work opportunities globally.</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h3>Threats</h3>
+          <ul>
+            <li>High competition in the job market.</li>
+            <li>Rapid technological changes.</li>
+            <li>Economic uncertainties.</li>
+            <li>AI replacing some entry-level roles.</li>
+          </ul>
+        </article>
+      </div>
+
+      <h3 style="margin-top: 28px;">Action Plan</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Goal</th>
+            <th>Action Steps</th>
+            <th>Timeline</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Improve UI/UX Design Skills</td>
+            <td>Practice Figma, study UI design principles, and redesign sample interfaces.</td>
+            <td>Ongoing</td>
+            <td>In Progress</td>
+          </tr>
+          <tr>
+            <td>Build Professional Profile</td>
+            <td>Update CV and LinkedIn with UI/UX skills, internship experience, certificates.</td>
+            <td>Ongoing</td>
+            <td>In Progress</td>
+          </tr>
+          <tr>
+            <td>Gain UI/UX Industry Experience</td>
+            <td>Apply for UI/UX trainee or entry-level roles.</td>
+            <td>6–12 months</td>
+            <td>Planned</td>
+          </tr>
+          <tr>
+            <td>Improve Communication Skills</td>
+            <td>Practice presentation delivery, interview answers, and English speaking</td>
+            <td>Ongoing</td>
+            <td>In Progress</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="panel" style="margin-top: 18px;">
+        <h3>Conclusion</h3>
+        <p>
+          Having a clear career development plan is important because it helps me identify the career path I want to follow and the skills I need to improve. Since my main interest is UI/UX design, I plan to focus on developing my design knowledge, professional profile, communication skills, and practical experience.Through the PPW module, I understood that career growth requires planning, continuous learning, and professional presentation. I will continue improving myself step by step so that I can become a confident and capable UI/UX Designer in the IT industry. 
+        </p>
+        <p>
+          Through the PPW module, I understood that career growth requires planning, continuous
+          learning, and professional presentation. I will continue improving myself step by step so
+          that I can become a confident and capable UI/UX Designer in the IT industry.
+        </p>
+      </div>
+    </section>
+
+    <section id="cv">
+      <h2>Curriculum Vitae</h2>
+      <div class="panel" style="margin-bottom: 18px;">
+        <ul class="profile-list">
+          <li><span class="label">Name</span><span>Rushani Randeni</span></li>
+          <li><span class="label">Role</span><span>Undergraduate - Information Technology</span></li>
+          <li><span class="label">Phone</span><span>+94 76 269 7912</span></li>
+          <li><span class="label">Email</span><span>rushanirandeni@gmail.com</span></li>
+          <li><span class="label">Location</span><span>Gampaha</span></li>
+          <li><span class="label">GitHub</span><span>https://github.com/madhushik</span></li>
+          <li><span class="label">LinkedIn</span><span>https://www.linkedin.com/in/rushani-madhushika/</span></li>
+        </ul>
+      </div>
+      <div class="image-stack cv-pages">
+        <figure>
+          <img src="assets/ppw-doc/image4.png" alt="Rushani Randeni CV page 1" loading="lazy">
+          <figcaption>CV page 1: profile, education, work experience, and project experience.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/ppw-doc/image5.png" alt="Rushani Randeni CV page 2" loading="lazy">
+          <figcaption>CV page 2: projects, certificates, references, tools, skills, languages, and interests.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="evidence">
+      <h2>Evidence of Skill Development</h2>
+      <div class="panel" style="margin-bottom: 18px;">
+        <h3>Selected Courses and Certifications</h3>
+        <ul>
+          <li>Python Programming - University of Moratuwa.</li>
+          <li>Introduction to Web Design and Development - LinkedIn Learning.</li>
+          <li>JavaScript Intermediate - HackerRank.</li>
+          <li>Python Basic - HackerRank.</li>
+          <li>Business Analysis Foundations - LinkedIn Learning.</li>
+        </ul>
+      </div>
+      <div class="image-stack">
+        <figure>
+          <img src="assets/ppw-doc/image10.jpeg" alt="Python for Beginners certificate from University of Moratuwa" loading="lazy">
+          <figcaption>Python for Beginners - University of Moratuwa.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/ppw-doc/image8.jpeg" alt="Introduction to Web Design and Development certificate" loading="lazy">
+          <figcaption>Introduction to Web Design and Development - LinkedIn Learning.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/ppw-doc/image6.jpeg" alt="JavaScript Intermediate certificate from HackerRank" loading="lazy">
+          <figcaption>JavaScript Intermediate - HackerRank.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/ppw-doc/image9.jpeg" alt="Python Basic certificate from HackerRank" loading="lazy">
+          <figcaption>Python Basic - HackerRank.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/ppw-doc/image7.jpeg" alt="Business Analysis Foundations certificate" loading="lazy">
+          <figcaption>Business Analysis Foundations - LinkedIn Learning.</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Rushani Randeni | IT22578778 | BSc (Hons) in Information Technology | PPW IT4070
+  </footer>
+  <script>
+    (() => {
+      const canvas = document.getElementById("live-background");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      if (!canvas || reduceMotion.matches) {
+        return;
+      }
+
+      const ctx = canvas.getContext("2d");
+      const palette = [
+        { r: 47, g: 122, b: 104 },
+        { r: 201, g: 168, b: 76 },
+        { r: 57, g: 94, b: 160 }
+      ];
+      const mouse = { x: null, y: null };
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+      let points = [];
+      let rafId = 0;
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const count = Math.min(86, Math.max(42, Math.floor((width * height) / 18000)));
+        points = Array.from({ length: count }, (_, index) => {
+          const color = palette[index % palette.length];
+          return {
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.34,
+            vy: (Math.random() - 0.5) * 0.34,
+            size: Math.random() * 1.9 + 0.8,
+            color
+          };
+        });
+      }
+
+      function drawPoint(point) {
+        const glow = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, point.size * 8);
+        glow.addColorStop(0, `rgba(${point.color.r}, ${point.color.g}, ${point.color.b}, 0.55)`);
+        glow.addColorStop(1, `rgba(${point.color.r}, ${point.color.g}, ${point.color.b}, 0)`);
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, point.size * 8, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = `rgba(${point.color.r}, ${point.color.g}, ${point.color.b}, 0.9)`;
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, point.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (const point of points) {
+          point.x += point.vx;
+          point.y += point.vy;
+
+          if (point.x < -20) point.x = width + 20;
+          if (point.x > width + 20) point.x = -20;
+          if (point.y < -20) point.y = height + 20;
+          if (point.y > height + 20) point.y = -20;
+        }
+
+        for (let i = 0; i < points.length; i += 1) {
+          for (let j = i + 1; j < points.length; j += 1) {
+            const a = points[i];
+            const b = points[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const distance = Math.hypot(dx, dy);
+
+            if (distance < 132) {
+              const alpha = (1 - distance / 132) * 0.18;
+              ctx.strokeStyle = `rgba(174, 209, 225, ${alpha})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        if (mouse.x !== null && mouse.y !== null) {
+          for (const point of points) {
+            const distance = Math.hypot(point.x - mouse.x, point.y - mouse.y);
+            if (distance < 190) {
+              const alpha = (1 - distance / 190) * 0.32;
+              ctx.strokeStyle = `rgba(201, 168, 76, ${alpha})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(point.x, point.y);
+              ctx.lineTo(mouse.x, mouse.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        for (const point of points) {
+          drawPoint(point);
+        }
+
+        rafId = requestAnimationFrame(animate);
+      }
+
+      window.addEventListener("resize", resize);
+      window.addEventListener("pointermove", (event) => {
+        mouse.x = event.clientX;
+        mouse.y = event.clientY;
+      });
+      window.addEventListener("pointerleave", () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      resize();
+      animate();
+    })();
+  </script>
+</body>
+</html>
